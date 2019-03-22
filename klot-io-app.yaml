@@ -1,0 +1,14 @@
+apiVersion: klot.io/v1
+kind: App
+metadata:
+  name: redis.klot.io
+  description: Kloud of Things I/O - Redis Server
+spec:
+  labels:
+  - name: redis.klot.io/storage
+    description: Required to place Redis
+    value: enabled
+    master: true
+  manifests:
+  - kubernetes/namespace.yaml
+  - kubernetes/daemon.yaml

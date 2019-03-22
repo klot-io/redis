@@ -1,0 +1,49 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: db
+  namespace: redis-klot-io
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+      nodeSelector:
+        redis.klot.io/storage: enabled
+      dnsPolicy: ClusterFirstWithHostNet
+      volumes:
+      - name: redis
+        hostPath:
+          path: /home/pi/storage/redis
+      containers:
+      - name: redis
+        image: klotio/redis:0.1
+        volumeMounts:
+        - name: redis
+          mountPath: /var/lib/redis
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 6379
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  namespace: redis-klot-io
+  labels:
+    app: db
+spec:
+  type: ClusterIP
+  ports:
+  - port: 6379
+    protocol: TCP
+    targetPort: 6379
+  clusterIP: None
+  selector:
+    app: db
