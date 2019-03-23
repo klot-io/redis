@@ -11,7 +11,12 @@ spec:
   - path: kubernetes/namespace.yaml
   - path: kubernetes/daemon.yaml
   labels:
-  - name: redis.klot.io/storage
+  - name: storage
     description: Required to place Redis
     value: enabled
     master: true
+  settings:
+  - name: redis
+    version: "5.0.3"
+    host: db.redis-klot-io
+    port: "6379"
