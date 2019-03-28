@@ -15,11 +15,10 @@ spec:
         key: node-role.kubernetes.io/master
       nodeSelector:
         redis.klot.io/storage: enabled
-      dnsPolicy: ClusterFirstWithHostNet
       volumes:
       - name: redis
         hostPath:
-          path: /home/pi/storage/redis
+          path: /home/pi/storage/redis.klot.io
       containers:
       - name: redis
         image: klotio/redis:0.1

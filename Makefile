@@ -15,8 +15,11 @@ build:
 shell:
 	docker run -it $(VARIABLES) $(VOLUMES) $(ACCOUNT)/$(IMAGE):$(VERSION) sh
 
-run:
-	docker run -it --rm -$(VARIABLES) $(VOLUMES) p 127.0.0.1:$(PORT):$(PORT) -h $(IMAGE) $(ACCOUNT)/$(IMAGE):$(VERSION)
+start:
+	docker run -d --name $(ACCOUNT)-$(IMAGE)-$(VERSION) $(VARIABLES) $(VOLUMES) -p 127.0.0.1:$(PORT):$(PORT) -h $(IMAGE) $(ACCOUNT)/$(IMAGE):$(VERSION)
+
+stop:
+	docker rm -f $(ACCOUNT)-$(IMAGE)-$(VERSION)
 
 push:
 	docker push $(ACCOUNT)/$(IMAGE):$(VERSION)
