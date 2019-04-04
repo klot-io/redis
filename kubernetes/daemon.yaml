@@ -38,11 +38,12 @@ metadata:
   labels:
     app: db
 spec:
-  type: ClusterIP
-  ports:
-  - port: 6379
-    protocol: TCP
-    targetPort: 6379
-  clusterIP: None
   selector:
     app: db
+  type: ClusterIP
+  clusterIP: None
+  ports:
+  - name: redis
+    port: 6379
+    protocol: TCP
+    targetPort: 6379
