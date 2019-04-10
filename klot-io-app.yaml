@@ -16,7 +16,8 @@ spec:
     value: enabled
     master: true
   publish:
-  - service:
+  - name: db
+    service:
       name: db
       namespace: redis-klot-io
       port: redis
