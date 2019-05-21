@@ -2,8 +2,8 @@ ACCOUNT=klotio
 IMAGE=redis
 VERSION?=0.1
 NAME=$(IMAGE)-$(ACCOUNT)
-VOLUMES=-v ${PWD}/data:/var/lib/redis
 NETWORK=klot-io 
+VOLUMES=-v ${PWD}/data:/var/lib/redis
 PORT=6379
 
 .PHONY: cross build shell run push install update reset remove
@@ -18,10 +18,10 @@ network:
 	-docker network create $(NETWORK)
 
 shell: network
-	docker run -it --rm --name=$(NAME) $(VARIABLES) $(VOLUMES) --network=$(NETWORK) $(ACCOUNT)/$(IMAGE):$(VERSION) sh
+	docker run -it --rm --name=$(NAME) --network=$(NETWORK) $(VOLUMES) $(ENVIRONMENT) $(ACCOUNT)/$(IMAGE):$(VERSION) sh
 
 start: network
-	docker run -d --name=$(NAME) $(VARIABLES) $(VOLUMES) --network=$(NETWORK) -p $(PORT):$(PORT) $(ACCOUNT)/$(IMAGE):$(VERSION)
+	docker run -d --name=$(NAME) --network=$(NETWORK) $(VOLUMES) $(ENVIRONMENT) -p 127.0.0.1:$(PORT):$(PORT) $(ACCOUNT)/$(IMAGE):$(VERSION)
 
 stop:
 	docker rm -f $(NAME)
