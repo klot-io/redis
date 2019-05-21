@@ -6,7 +6,7 @@ NETWORK=klot-io
 VOLUMES=-v ${PWD}/data:/var/lib/redis
 PORT=6379
 
-.PHONY: cross build shell run push install update reset remove
+.PHONY: cross build network shell start stop push install update remove reset
 
 cross:
 	docker run --rm --privileged multiarch/qemu-user-static:register --reset
