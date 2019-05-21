@@ -2,7 +2,7 @@ ACCOUNT=klotio
 IMAGE=redis
 VERSION?=0.1
 NAME=$(IMAGE)-$(ACCOUNT)
-NETWORK=klot-io 
+NETWORK=klot-io
 VOLUMES=-v ${PWD}/data:/var/lib/redis
 PORT=6379
 
