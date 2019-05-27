@@ -6,7 +6,7 @@ NETWORK=klot.io
 VOLUMES=-v ${PWD}/data:/var/lib/redis
 PORT=6379
 
-.PHONY: cross build network shell start stop push install update remove reset
+.PHONY: cross build network shell start stop push install update remove reset tag
 
 cross:
 	docker run --rm --privileged multiarch/qemu-user-static:register --reset
@@ -41,3 +41,7 @@ remove:
 	-kubectl delete -f kubernetes/namespace.yaml
 
 reset: remove install
+
+tag:
+	-git tag -a "v$(VERSION)" -m "Version $(VERSION)"
+	git push origin --tags
