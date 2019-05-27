@@ -15,11 +15,3 @@ spec:
     description: Where you want Redis to be stored
     value: enabled
     master: true
-  publish:
-  - name: db
-    service:
-      name: db
-      namespace: redis-klot-io
-      port: redis
-    version: "5.0.3"
-    protocol: redis
