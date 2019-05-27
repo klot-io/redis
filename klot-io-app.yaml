@@ -9,7 +9,7 @@ spec:
     repo: klot-io/redis
   manifests:
   - path: kubernetes/namespace.yaml
-  - path: kubernetes/daemon.yaml
+  - path: kubernetes/db.yaml
   labels:
   - name: storage
     description: Where you want Redis to be stored
