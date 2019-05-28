@@ -29,7 +29,7 @@ spec:
         image: klotio/redis:0.1
         volumeMounts:
         - name: redis
-          mountPath: /var/lib/redis
+          mountPath: /data
         imagePullPolicy: Always
         ports:
         - containerPort: 6379
