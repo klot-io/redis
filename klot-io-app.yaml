@@ -9,6 +9,7 @@ spec:
     repo: klot-io/redis
   namespace: redis-klot-io
   manifests:
+  - path: kubernetes/namespace.yaml
   - path: kubernetes/db.yaml
   labels:
   - name: storage

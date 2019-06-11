@@ -38,6 +38,7 @@ update:
 	kubectl replace -f kubernetes/db.yaml
 
 remove:
+	-kubectl delete -f kubernetes/db.yaml
 	-kubectl delete -f kubernetes/namespace.yaml
 
 reset: remove install
