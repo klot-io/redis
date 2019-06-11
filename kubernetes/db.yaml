@@ -15,15 +15,15 @@ spec:
       labels:
         app: db
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
       tolerations:
       - effect: NoSchedule
         key: node-role.kubernetes.io/master
       nodeSelector:
         redis.klot.io/storage: enabled
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       volumes:
       - name: redis
         hostPath:
