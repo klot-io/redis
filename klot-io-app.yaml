@@ -3,10 +3,8 @@ kind: App
 metadata:
   name: redis.klot.io
   description: Redis Server - Kloud of Things I/O
+  version: '0.1'
 spec:
-  source:
-    site: github.com
-    repo: klot-io/redis
   namespace: redis-klot-io
   manifests:
   - path: kubernetes/namespace.yaml
