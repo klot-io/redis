@@ -2,8 +2,8 @@ apiVersion: klot.io/v1
 kind: App
 metadata:
   name: redis.klot.io
-  description: Redis Server - Kloud of Things I/O
   version: v0.1
+  description: Redis Server - Kloud of Things I/O
 spec:
   namespace: redis-klot-io
   manifests:
