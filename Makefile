@@ -6,7 +6,7 @@ NETWORK=klot.io
 VOLUMES=-v ${PWD}/data:/var/lib/redis
 PORT=6379
 
-.PHONY: cross build network shell start stop push install update remove reset tag
+.PHONY: cross build network shell start stop push install update remove reset tag untag
 
 cross:
 	docker run --rm --privileged multiarch/qemu-user-static:register --reset
@@ -46,3 +46,7 @@ reset: remove install
 tag:
 	-git tag -a "v$(VERSION)" -m "Version $(VERSION)"
 	git push origin --tags
+
+untag:
+	-git tag -d "v$(VERSION)"
+	git push origin ":refs/tags/v$(VERSION)"
