@@ -26,7 +26,7 @@ spec:
           path: /home/pi/storage/redis.klot.io
       containers:
       - name: redis
-        image: klotio/redis:0.1
+        image: klotio/redis:0.2
         volumeMounts:
         - name: redis
           mountPath: /data
