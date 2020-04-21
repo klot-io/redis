@@ -1,16 +1,14 @@
 apiVersion: klot.io/v1
-kind: App
+kind: KlotIOApp
 metadata:
   name: redis.klot.io
-  version: v0.1
-  description: Redis Server - Kloud of Things I/O
 spec:
   namespace: redis-klot-io
+  description: Redis Server - Kloud of Things I/O
   manifests:
   - path: kubernetes/namespace.yaml
   - path: kubernetes/db.yaml
-  labels:
+  settings:
   - name: storage
     description: Where you want Redis to be stored
-    value: enabled
-    master: true
+    node: enabled
