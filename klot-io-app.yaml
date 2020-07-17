@@ -3,10 +3,9 @@ kind: KlotIOApp
 metadata:
   name: redis.klot.io
 spec:
-  namespace: redis-klot-io
+  namespace: redis
   description: Redis Server - Kloud of Things I/O
   manifests:
-  - path: kubernetes/namespace.yaml
   - path: kubernetes/db.yaml
   settings:
   - name: storage
