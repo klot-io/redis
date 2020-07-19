@@ -30,6 +30,7 @@ push:
 	docker push $(ACCOUNT)/$(IMAGE):$(VERSION)
 
 install:
+	-kubectl create ns $(NAMESPACE)
 	kubectl create -f kubernetes/db.yaml
 
 update:
@@ -37,6 +38,7 @@ update:
 
 remove:
 	-kubectl delete -f kubernetes/db.yaml
+	-kubectl delete ns $(NAMESPACE)
 
 reset: remove install
 
