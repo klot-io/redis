@@ -2,6 +2,7 @@ ACCOUNT=klotio
 IMAGE=redis
 VERSION?=0.3
 NAME=$(IMAGE)-$(ACCOUNT)
+NAMESPACE=redis
 NETWORK=klot.io
 VOLUMES=-v ${PWD}/data:/var/lib/redis
 PORT=6379
@@ -30,16 +31,15 @@ push:
 	docker push $(ACCOUNT)/$(IMAGE):$(VERSION)
 
 install:
-	kubectl create -f kubernetes/namespace.yaml
+	-kubectl create ns $(NAMESPACE)
 	kubectl create -f kubernetes/db.yaml
 
 update:
-	kubectl replace -f kubernetes/namespace.yaml
 	kubectl replace -f kubernetes/db.yaml
 
 remove:
 	-kubectl delete -f kubernetes/db.yaml
-	-kubectl delete -f kubernetes/namespace.yaml
+	-kubectl delete ns $(NAMESPACE)
 
 reset: remove install
 
