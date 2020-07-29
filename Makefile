@@ -3,9 +3,8 @@ IMAGE=redis
 VERSION?=0.3
 NAME=$(IMAGE)-$(ACCOUNT)
 NAMESPACE=redis
-NETWORK=klot.io
 VOLUMES=-v ${PWD}/data:/var/lib/redis
-PORT=26379
+TILT_PORT=26379
 
 .PHONY: cross build shell up down push install update remove reset tag untag
 
@@ -23,7 +22,7 @@ up:
 	echo "- op: replace\n  path: /spec/template/spec/volumes/0/hostPath/path\n  value: $(PWD)/data" > tilt/data.yaml
 	kubectx docker-desktop
 	-kubectl label node docker-desktop redis.klot.io/storage=enabled
-	tilt --port $(PORT) up
+	tilt --port $(TILT_PORT) up
 
 down:
 	kubectx docker-desktop

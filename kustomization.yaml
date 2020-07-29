@@ -5,7 +5,7 @@ resources:
 - kubernetes/db.yaml
 - klot-io-app.yaml
 patchesStrategicMerge:
-- tilt/image.yaml
+- tilt/db.yaml
 - tilt/app.yaml
 patchesJson6902:
 - target:
