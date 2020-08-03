@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  namespace: redis
+spec:
+  template:
+    spec:
+      containers:
+      - name: redis
+        image: redis-klot-io
+        imagePullPolicy: Never
